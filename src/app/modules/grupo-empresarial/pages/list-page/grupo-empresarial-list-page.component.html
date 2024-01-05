@@ -1,0 +1,79 @@
+<h1>Grupo Empresarial</h1>
+<button mat-raised-button color="primary" class="btn-nuevo" (click)="nuevoGrupoEmpresarial()">Nuevo</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="dueno">
+        <th mat-header-cell *matHeaderCellDef>Dueño</th>
+        <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef>Telefono</th>
+        <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fecha_registro">
+        <th mat-header-cell *matHeaderCellDef>Fecha Registro</th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha_registro | date : 'dd MMMM yyyy'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button mat-menu-panel">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                </button>
+            </mat-menu>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
+
+<!-- <form class="row g-3">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Check me out
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+</form> -->

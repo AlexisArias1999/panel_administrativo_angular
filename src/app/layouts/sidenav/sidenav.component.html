@@ -1,0 +1,37 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">
+            <img src="../../../assets/logo_empresa.png" class="logo_empresa" />
+        </button>
+        <div class="logo-text" *ngIf="collapsed" @fadeInOut>M&S CONSULTORES</div>
+        <button class="btn-close" *ngIf="collapsed" @rotate (click)="closeSidenav()">
+            <i class="fal fa-times close icon"></i>
+        </button>
+    </div>
+
+    <div class="scrollwrap scrollwrap_delayed">
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item" *ngFor="let item of navData">
+                <a class="sidenav-nav-link" *ngIf="item.items && item.items.length > 0" (click)="handleClick(item)"
+                    [ngClass]="getActiveClass(item)">
+                    <i class="sidenav-link-icon" [class]="item.icon"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
+                    <i *ngIf="item.items && collapsed" class="menu-collapse-icon"
+                        [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'">
+                    </i>
+                </a>
+                <a *ngIf="!item.items || (item.items && item.items.length === 0)" [routerLink]="[item.routeLink]"
+                    class="sidenav-nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    (click)="shrinkItems(item)">
+                    <i class="sidenav-link-icon" [class]="item.icon"> </i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
+
+                </a>
+                <div *ngIf="collapsed && item.items && item.items.length > 0">
+                    <app-sublevel-menu [data]="item" [collapsed]="collapsed" [multiple]="multiple"
+                        [expanded]="item.expanded"></app-sublevel-menu>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="title"><span>M&S Consultores</span></div>
+        <form action="#" autocomplete="off" [formGroup]="myForm" (ngSubmit)="login()">
+            <div class="row">
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <input type="text" placeholder="Correo Electrónico" formControlName="email">
+                @if (isValidField('email')) {
+                <span class="form-text text-danger">
+                    Formato incorrecto
+                </span>
+                }
+            </div>
+            <div class="row">
+                <mat-icon matSuffix>lock</mat-icon>
+                <input type="password" placeholder="Contraseña" formControlName="password">
+            </div>
+            <div class=" row button">
+                <input type="submit" value="Iniciar Sesión">
+            </div>
+        </form>
+    </div>
+</div>
