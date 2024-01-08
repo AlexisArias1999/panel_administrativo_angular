@@ -15,15 +15,15 @@ const routes: Routes = [
     path: '404',
     component: Error404Component
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'auth',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: '404'
-  // }
+  {
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: '404'
+  }
 ];
 
 @NgModule({
