@@ -17,10 +17,10 @@ const routes: Routes = [
         path: 'register',
         component: AuthRegisterPageComponent
       },
-      {
-        path: '**',
-        redirectTo: 'login'
-      }
+      // {
+      //   path: '**',
+      //   redirectTo: 'login'
+      // }
     ]
   }
 ];
